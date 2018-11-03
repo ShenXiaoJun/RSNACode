@@ -13,10 +13,10 @@ import shutil
 # 训练数据的图像分辨率，这可以作为Example中的一个属性
 
 pic_dir         = "/home/shenxj/RSNA/data/stage_1_train_jpg"
-normal_dir      = "/home/shenxj/RSNA/code/pic/pic_normal/"
-not_normal_dir  = "/home/shenxj/RSNA/code/pic/pic_not_normal/"
+normal_dir      = "/home/shenxj/RSNA/RSNACode/pic/pic_normal/"
+not_normal_dir  = "/home/shenxj/RSNA/RSNACode/pic/pic_not_normal/"
 #class_info_file = "/home/shenxj/RSNA/code/stage_1_detailed_class_info.csv"
-labels_file     = "/home/shenxj/RSNA/code/stage_1_train_labels.csv"
+labels_file     = "/home/shenxj/RSNA/RSNACode/stage_1_train_labels.csv"
 
 
 starttime = datetime.datetime.now()

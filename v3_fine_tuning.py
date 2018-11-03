@@ -11,12 +11,12 @@ import tensorflow.contrib.slim as slim
 import tensorflow.contrib.slim.python.slim.nets.inception_v3 as inception_v3
 
 # 处理好之后的数据文件。
-INPUT_DATA = '/home/shenxj/RSNA/code/v3/v3_processed_data.npy'
+INPUT_DATA = '/home/shenxj/RSNA/RSNACode/v3/v3_processed_data.npy'
 # 保存训练好的模型的路径。
 TRAIN_FILE = 'train_dir/model'
 # 谷歌提供的训练好的模型文件地址。因为GitHub无法保存大于100M的文件，所以
 # 在运行时需要先自行从Google下载inception_v3.ckpt文件。
-CKPT_FILE = '/home/shenxj/RSNA/code/v3/inception_v3.ckpt'
+CKPT_FILE = '/home/shenxj/RSNA/RSNACode/v3/inception_v3.ckpt'
 
 # 定义训练中使用的参数。
 LEARNING_RATE = 0.0001

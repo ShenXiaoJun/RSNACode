@@ -10,9 +10,9 @@ import cv2
 
 # 原始输入数据的目录，这个目录下有2个子目录，每个子目录底下保存这属于该
 # 类别的所有图片。
-INPUT_DATA = '/home/shenxj/RSNA/code/pic'
+INPUT_DATA = '/home/shenxj/RSNA/RSNACode/pic'
 # 输出文件地址。我们将整理后的图片数据通过numpy的格式保存。
-OUTPUT_FILE = '/home/shenxj/RSNA/code/v3/v3_processed_data.npy'
+OUTPUT_FILE = '/home/shenxj/RSNA/RSNACode/v3/v3_processed_data.npy'
 
 # 测试数据和验证数据比例。
 VALIDATION_PERCENTAGE = 10
@@ -56,12 +56,11 @@ def create_image_lists(sess, testing_percentage, validation_percentage):
             # 读取并解析图片，将图片转化为299*299以方便inception-v3模型来处理。
             image_raw_data = gfile.FastGFile(file_name, 'rb').read()
             image = tf.image.decode_jpeg(image_raw_data)
-            im = array(cv2.imread(file_name))
-            print (im.shape, im.dtype)
-            #image = array(image).reshape(32, 299, 299, 1)
             if image.dtype != tf.float32:
                 image = tf.image.convert_image_dtype(image, dtype=tf.float32)
             image = tf.image.resize_images(image, [299, 299])
+            image = tf.image.hsv_to_rgb(image)##
+            print (image.shape, image.dtype)
             image_value = sess.run(image)
 
             # 随机划分数据聚。
@@ -77,6 +76,7 @@ def create_image_lists(sess, testing_percentage, validation_percentage):
                 training_labels.append(current_label)
             if i % 10 == 0:
                 print i, "images processed."
+            #break
         current_label += 1
 
     # 将训练数据随机打乱以获得更好的训练效果。
